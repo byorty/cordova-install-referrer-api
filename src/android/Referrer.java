@@ -13,7 +13,6 @@ public class Referrer extends CordovaPlugin {
 
     @Override
     public boolean execute(String action, JSONArray data, CallbackContext callbackContext) throws JSONException {
-
         if (action.equals("get")) {
             InstallReferrerClient referrerClient = InstallReferrerClient.newBuilder(this.cordova.getActivity().getApplicationContext()).build();
             referrerClient.startConnection(new InstallReferrerStateListener() {
@@ -29,13 +28,11 @@ public class Referrer extends CordovaPlugin {
                             callbackContext.success(result);
                         } else {
                             JSONObject result = new JSONObject();
-                            result.put("error", errorCode);
+                            result.put("error", responseCode);
                             callbackContext.error(result);
                         }
                     } catch (RemoteException e) {
-                        this.returnError(callbackContext, InstallReferrerResponse.DEVELOPER_ERROR);
                     } catch (JSONException e) {
-                        this.returnError(callbackContext, InstallReferrerResponse.DEVELOPER_ERROR);
                     }
 
                     referrerClient.endConnection();
@@ -43,12 +40,6 @@ public class Referrer extends CordovaPlugin {
 
                 @Override
                 public void onInstallReferrerServiceDisconnected() {
-                }
-
-                private void returnError(CallbackContext callbackContext, int errorCode) throws JSONException {
-                    JSONObject result = new JSONObject();
-                    result.put("error", errorCode);
-                    callbackContext.error(result);
                 }
             });
 
