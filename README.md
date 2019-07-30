@@ -12,7 +12,19 @@ This plugin captures the referrer value passed when an android app is installed 
 ```javascript
 cordova.plugins.referrer.get().then((referrer) => {
     console.log(referrer);
+    
+    // Result:
+    // {
+    //     clickTimestamp: 0,
+    //     installBeginTimestamp: 0,
+    //     referrer: "utm_source=google-play&utm_medium=organic"
+    // }    
 }).catch((error) => {
     console.error(error);
+    
+    // Result:
+    // {
+    //     error: 1
+    // }
 });
 ```
