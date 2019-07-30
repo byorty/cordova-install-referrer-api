@@ -28,3 +28,13 @@ cordova.plugins.referrer.get().then((referrer) => {
     // }
 });
 ```
+
+## Error codes
+
+| Code | Description                                                        |
+|:----:|:-------------------------------------------------------------------|
+| -1   | Play Store service is not connected now                            |
+| 0    | Success                                                            |
+| 1    | Could not initiate connection to the Install Referrer service      |
+| 2    | Install Referrer API not supported by the installed Play Store app |
+| 3    | General errors caused by incorrect usage                           |
