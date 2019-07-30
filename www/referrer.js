@@ -1,5 +1,7 @@
 module.exports = {
-    get: function (onSuccess, onError) {
-        cordova.exec(onSuccess, onError, 'Referrer', 'get');
+    get: function () {
+        return new Promise(function(resolve, reject) {
+            cordova.exec(resolve, reject, 'Referrer', 'get');
+        });
     }
 };
